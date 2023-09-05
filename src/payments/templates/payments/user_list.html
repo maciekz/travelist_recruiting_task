@@ -1,0 +1,29 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+    <h2>List of users with their points</h2>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Last name</th>
+        <th scope="col">First name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Balance</th>
+        <th scope="col">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in object_list %}
+        <tr>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.first_name}}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.balance }}</td>
+            <td><a href="{% url 'user_balance_update' user.id %}">Update balance</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

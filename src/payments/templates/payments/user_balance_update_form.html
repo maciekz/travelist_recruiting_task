@@ -1,0 +1,32 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+    <h2>Update user's balance</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Last name</th>
+            <th scope="col">First name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user_with_balance.last_name }}</td>
+                <td>{{ user_with_balance.first_name}}</td>
+                <td>{{ user_with_balance.email }}</td>
+                <td>{{ user_with_balance.balance }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update balance">
+        <a href="{% url 'user_list' %}"><input type="button" value="Back to user list" /></a>
+    </form>
+
+{% endblock %}
